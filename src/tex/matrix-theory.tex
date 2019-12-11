@@ -1,0 +1,1198 @@
+\part{矩阵论}
+\section{$\lambda$矩阵与Jordan标准型}
+\subsection{$\lambda$矩阵}
+
+\begin{definition}[多项式矩阵~$\lambda$-矩阵]
+    若$a_{ij}(\lambda),i=1,2,\dots,m,\linebreak[1]j=1,2,\dots,n$为$\lambda$的多项式，
+    构成的矩阵$A(\lambda)$或记为$A$称为\textkw{多项式矩阵}或\textkw{$\lambda$-矩阵}。
+\end{definition}
+
+\begin{definition}[秩]
+    $\lambda$-矩阵的秩定义为矩阵中最大的主子式并非全零的阶数。
+    注意行列式为零指为多项式$0$，而不是能取到$0$。
+\end{definition}
+
+\begin{definition}[可逆~逆矩阵]
+    对给定$n$阶方形$\lambda$-阵$A(\lambda)$，
+    定义$A(\lambda)$可逆为$\exists B(\lambda),A(\lambda)B(\lambda)=B(\lambda)A(\lambda)=I$，
+    称$B(\lambda)$为$A(\lambda)$的逆矩阵，记为$A^{-1}(\lambda)$。
+\end{definition}
+
+\begin{theorem}
+    \[
+        A^{-1}=\frac{1}{\det A(\lambda)} A^{*}(\lambda)
+    \]
+    其中右侧为行列式与伴随矩阵。
+\end{theorem}
+
+\begin{corollary}
+    对方阵$A(\lambda)$，
+    $A(\lambda)$可逆当且仅当$\det A(\lambda) \equiv c (c\neq 0)$。
+\end{corollary}
+
+\begin{definition}[初等变换~初等矩阵]
+    $\lambda$-矩阵的初等变换：
+    \begin{itemize}
+        \item 交换两行
+        \item 行乘$c$（$c\neq 0$）
+        \item 行乘以$\phi(\lambda)$加到另一行
+    \end{itemize}
+    单位矩阵施加以上操作得到的矩阵称为初等矩阵。
+\end{definition}
+
+\begin{theorem}
+    初等矩阵均可逆。
+\end{theorem}
+
+\begin{corollary}
+    初等矩阵的累积可逆，可逆矩阵可写作初等矩阵的积。
+\end{corollary}
+
+\begin{theorem}
+    初等行变换等价于左侧乘以初等矩阵，初等列变换等价于右侧乘以初等矩阵。
+\end{theorem}
+
+\begin{definition}
+    若$A(\lambda)$可经过有限次初等变换得到$B(\lambda)$，定义两$\lambda$-矩阵等价，记为$A(\lambda)\cong B(\lambda)$。
+\end{definition}
+
+\begin{corollary}
+$A\cong B \Leftrightarrow \exists P(\lambda),Q(\lambda), B(\lambda) = P(\lambda) A(\lambda) Q(\lambda)$
+\end{corollary}
+
+\subsection{Smith标准型与不变因子、行列式因子}
+
+\begin{definition}[Smith标准型~不变因子]
+%    对任意$m\times n$ $\lambda$-矩阵$A(\lambda)$，
+    对任意$n$阶$\lambda$-矩阵$A(\lambda)$，
+    总是有对角阵$\DiagMatrix(d_1(\lambda),d_2(\lambda),\dots,\linebreak[1]d_r(\lambda),0,\dots,0)$与之等价。
+    其中$d_i(\lambda)$都是首项系数为$1$的多项式，且$d_i|d_{i+1}$。
+    称这个对角阵为$A(\lambda)$的\textkw{Smith标准型}，其中$d_i(\lambda)$称为$A(\lambda)$的\textkw{不变因子}。
+\end{definition}
+
+\begin{definition}[行列式因子]
+    对$A(\lambda)$，定义所有$k$阶子式的最大公因式$D_k(\lambda)$为$A(\lambda)$的$k$阶\textkw{行列式因子}。
+    约定其首项系数为$1$。
+\end{definition}
+
+\begin{property}
+    行列式因子具有以下性质：
+    \begin{itemize}
+        \item $D_i(\lambda)|D_{i+1}(\lambda)$
+        \item $D_i=1\Rightarrow D_{i-1}=D_{i-2}=\dots=D_1=1$
+        \item 存在$k$阶子式非零常数，则$D_k=1$
+        \item 存在两个$k$阶子式无公因式，则$D_k=1$
+        \item $D_k(\lambda)=a\det A(\lambda)$
+    \end{itemize}
+\end{property}
+
+\begin{theorem}
+    初等变换不改变行列式因子和秩。
+\end{theorem}
+
+\begin{theorem}
+    $D_k(\lambda)=\prod\limits_{i=1}^{k} d_i(\lambda)$
+\end{theorem}
+
+\begin{corollary}
+    \[
+        A\cong B
+        \Leftrightarrow \forall k, D_{Ak}(\lambda) = D_{Bk}(\lambda)
+        \Leftrightarrow \forall i, d_{Ai}(\lambda) = d_{Bi}(\lambda)
+    \]
+\end{corollary}
+
+\begin{theorem}
+    Smith标准型唯一。
+\end{theorem}
+
+\begin{theorem}
+    \[
+        A(\lambda)\text{可逆}\Leftrightarrow A(\lambda)\cong I
+    \]
+\end{theorem}
+
+\subsection{初等因子}
+
+\begin{definition}
+    按$d_r(\lambda)$的$s$个互异复根$\lambda_j$分解多项式为一次多项式之积，则由整除关系，
+    $d_i=\prod_j (\lambda-\lambda_j)^{e_{ij}},i=1,2,\dots,r,j=1,2,\dots,s$，且$0\leq e_{1j}\leq e_{2j} \leq\dots\leq e_{rj}$。
+    其中全部指数大于零的因子$(\lambda-\lambda_j)^{e_{ij}}$，允许重复，称为其\textkw{初等因子}。
+\end{definition}
+
+举例：
+\[
+    \begin{aligned}
+        d_{1}(\lambda) &= 1 \\
+        d_{2}(\lambda) &= \lambda(\lambda-1) \\
+        d_{3}(\lambda) &= \lambda(\lambda-1)^{2}(\lambda+1)^{2} \\
+        d_{4}(\lambda) &= \lambda^{2}(\lambda-1)^{3}(\lambda+1)^{3}(\lambda-2) \\
+    \end{aligned}
+\]
+则$A(\lambda)$初等因子为$\lambda, \lambda, \lambda^{2}, \lambda-1, (\lambda-1)^{2},(\lambda-1)^{3},(\lambda+1)^{2},(\lambda+1)^{3},(\lambda-2)$
+
+\begin{property}
+    若不变因子相同，初等因子必然相同。若初等因子相同且秩相同，不变因子必然相同。
+\end{property}
+前者显然，后者是因为同一个根构成的$k$个因子一定分别是来自$d_r,d_{r-1},\dots,d_{r-k+1}$的因子。
+
+\begin{corollary}
+    矩阵等价当且仅当有相同的秩和初等因子。
+\end{corollary}
+
+\begin{theorem}
+    分块对角矩阵的初等因子的全体为所有子矩阵的初等因子的全体。
+\end{theorem}
+
+\subsection{数字矩阵相似与$\lambda$矩阵等价}
+\begin{theorem}
+    数字矩阵$A,B$相似当且仅当$\lambda I-A,\lambda I-B$等价。
+\end{theorem}
+
+\begin{definition}
+    对数字矩阵$A$，称$\lambda I - A$的不变因子、初等因子为$A$的不变因子、初等因子。
+\end{definition}
+
+考虑对数字矩阵$A$，$\lambda I-A$必然满秩，有
+\begin{definition}
+    对数字矩阵$A,B$，以下条件等价：
+    \begin{itemize}
+        \item 相似。
+        \item 有相同初等因子。
+        \item 有相同不变因子。
+        \item 有相同行列式因子。
+    \end{itemize}
+\end{definition}
+
+\subsection{Jordan标准型}
+
+\subsubsection{求解等价的标准型}
+
+\begin{theorem}
+    对数字矩阵$A$，记初等因子为$\left(\lambda-a_{1}\right)^{n_{1}},\linebreak[1]\left(\lambda-a_{2}\right)^{n_{2}},\cdots,\left(\lambda-a_{s}\right)^{n_{s}}$，
+    则$A\sim J$，其中$J$是Jordan矩阵$J=\DiagMatrix(J_1,J_2,\dots,J_s)$，且$J_i$是对角元为$a_i$的$n_i$阶Jordan块。
+\end{theorem}
+
+\begin{corollary}
+    数字矩阵$A$可以对角化当且仅当初等因子都是一次式。
+\end{corollary}
+
+通过特征值和矩阵秩也可用于求解Jordan标准型。
+每个特征值的代数重数（特征多项式根的重数）是特征值在对角线上出现的次数，
+即对应Jordan块阶数和，
+几何重数（对应不变子空间维数）是Jordan块数。
+但是这个方法没办法区分Jordan块的划分，
+如果存在同一特征值的2个2阶Jordan块和1个1阶1个3阶都会表现为代数重数4，几何重数2。
+因此这一方法仅能用于低阶矩阵Jordan标准型的求解。
+
+\begin{theorem}
+    \[
+        \begin{bmatrix}
+            a & b\\
+              & a
+        \end{bmatrix}
+        \sim
+        \begin{bmatrix}
+            a & 1 \\
+              & a \\
+        \end{bmatrix}
+    \]
+\end{theorem}
+
+\subsubsection{求解相似变换矩阵}
+关于
+\[
+    P^{-1}AP=J
+\]
+求解$P$。
+
+\[
+    AP=PJ
+\]
+按若尔当矩阵分块书写这一矩阵可得关于向量的方程组，
+\[
+    \left[A P_{1}, A P_{2}, \cdots, A P_{t}\right]=\left[P_{1} J_{1}, P_{2} J_{2}, \cdots, P_{t} J_{t}\right]
+\]
+在每一个$A P_i = P_i J_i$中，按列分块$P=[X_1,X_2,\dots,X_{n_i}]$有
+\[
+    \begin{split}
+        A X_1 &= \lambda_i X_1 \\
+        A X_2 &= X_1+ \lambda_i X_2\\
+        A X_3 &= X_2+ \lambda_i X_3 \\
+        &\dots \\
+        A X_n &= X_{n_i-1}+\lambda_i X_{n_i}\\
+    \end{split}
+\]
+$X_1$的选取需要保证$X_2$有解，依此类推，且需要解出线性无关的特征向量。
+
+\section{内积空间、正规矩阵与Hermite阵}
+
+\subsection{内积空间}
+
+\subsubsection{内积空间}
+
+\begin{definition}[内积空间]
+    对给定$F=\mathbb{C}$上的向量空间$V$，
+    定义一个$V\times V\to F, \alpha,\beta\mapsto (\alpha,\beta)$的运算$(\alpha,\beta)$，
+    若这个运算满足：
+    \begin{itemize}
+        \item 共轭对称性$(\alpha,\beta)=\overline{(\beta,\alpha)}$
+        \item 对$\alpha$线性$(\alpha_1+\alpha_2, \beta)=(\alpha_1,\beta)+(\alpha_2,\beta),(k\alpha,\beta)=k(\alpha,\beta)$
+        \item 正定性$(\alpha,\alpha)\geq 0$，且$(\alpha,\alpha)=0\Leftrightarrow \alpha=\bm{0}$
+    \end{itemize}
+    称这个运算是一个\textkw{内积}运算。
+    增添了内积结构的复向量空间称为\textkw{酉空间}，实数域上为\textkw{欧几里得空间}，统称内积空间。
+\end{definition}
+
+\begin{property}
+    \begin{gather*}
+        \left(\sum_{i=1}^{t} k_{i} \alpha_{i}, \beta\right) =\sum_{i=1}^{t} k_{i}\left(\alpha_{i}, \beta\right) \\
+        \left(\alpha, \sum_{i=1}^{t} k_{i} \beta_{i}\right) =\sum_{i=1}^{t} \bar{k}_{i}\left(\alpha, \beta_{i}\right)
+    \end{gather*}
+\end{property}
+
+\begin{definition}[度量矩阵]
+    对$n$维酉空间$V$上的一组基$\{\alpha_i\}$，定义
+    \[
+        G=\Big((\alpha_i, \alpha_j)\Big)_{n\times n}
+    \]
+    为基底$\{\alpha_i\}$的度量矩阵。
+\end{definition}
+
+\begin{property}
+    度量矩阵是Hermite阵。
+\end{property}
+
+已省略其他定义。
+\begin{itemize}
+    \item 内积
+    \item 酉空间/欧氏空间
+    \item 长度
+    \item 夹角
+    \item 单位化
+    \item 正交向量组/正交基
+    \item 标准正交向量组/标准正交基
+    \item Schmidt正交化
+\end{itemize}
+
+\subsubsection{酉矩阵/正交矩阵}
+
+\begin{definition}
+    Hermite算子${}\Hermitian$定义为$A\Hermitian=\bar{A}\Transpose=\overline{A\Transpose}$，称为$A$的共轭转置矩阵。
+    对方阵$A$，若$A=A\Hermitian$定义为Hermite阵，简称H-阵；若$A=-A\Hermitian$定义为反Hermite阵，简称反H-阵。
+    对应实数域上的对称矩阵和反对称矩阵。
+\end{definition}
+
+\begin{definition}
+    定义满足$U U\Hermitian=U\Hermitian U=I$的$n$阶方阵$U$为酉矩阵，记集合为$U\in U^{n\times n}$。
+    实数域上为正交矩阵。
+\end{definition}
+
+\begin{theorem}
+    Householder阵$H=I-2\alpha\alpha\Hermitian,|\alpha|=1$为酉矩阵。
+\end{theorem}
+
+\begin{property}
+    若$A$为酉矩阵：
+    \begin{itemize}
+        \item $A^H=A^{-1}\in U^{n\times n}$
+        \item $|\det A|=1$
+        \item $AB,BA\in U^{n\times n}$
+    \end{itemize}
+\end{property}
+
+\begin{theorem}
+    给定矩阵，是酉矩阵当且仅当列向量标准正交。
+\end{theorem}
+
+\begin{definition}
+    定义酉空间上保持内积不变的线性变换为酉变换。
+    欧氏空间上保持内积不变的称为正交变换。
+\end{definition}
+
+\begin{property}
+    酉变换保持向量的长度、夹角不变。
+\end{property}
+
+\begin{theorem}
+    给定酉空间$V$和$V$上线性变换$\sigma$，以下等价：
+    \begin{itemize}
+        \item $\sigma$是酉变换
+        \item $\forall \alpha\in V, \|\sigma(\alpha)\|=\|\alpha\|$
+        \item 将$V$中的一组标准正交基变换为标准正交基
+        \item $\sigma$在标准正交基下的表示为酉矩阵
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}[次酉矩阵]
+    给定列满秩矩阵$U\in \mathbb{C}^{m\times r}_r$，若列向量标准正交，称为\textkw{次酉矩阵}，记$U\in U^{m\times r}_r$。
+\end{definition}
+
+\begin{theorem}
+    给定$U\in \mathbb{C}^{m\times n}$，$U$是次酉矩阵当且仅当$U\Hermitian U=I_r$。
+\end{theorem}
+
+\subsubsection{幂等矩阵}
+
+\begin{definition}
+    对方阵$A$，若$A^2=A$，称$A$幂等。
+\end{definition}
+
+\begin{property}
+    给定幂等矩阵$A$，有：
+    \begin{itemize}
+        \item $A\Transpose,A\Hermitian,I-A$幂等
+        \item $A(I-A)=(I-A)A=0$
+        \item $\operatorname{N}(A)=\operatorname{R}(I-A)$
+        \item $Ax=x\Leftrightarrow x\in R(A)$
+        \item $\mathbb{C}^n=\operatorname{R}(A)\oplus \operatorname{N}(A)$
+    \end{itemize}
+\end{property}
+
+\begin{theorem}
+    $A\in \mathbb{C}^{n\times n}_r$，$A$幂等$\Leftrightarrow A\sim \DiagMatrix{(I_r,\bm{0}_{n-r})}$
+\end{theorem}
+
+\begin{corollary}
+    $A$幂等$\Rightarrow \RankOf(A)=\TraceOf(A)$
+\end{corollary}
+
+\begin{theorem}
+    方阵$A$，$A$幂等，当且仅当，存在次酉矩阵$U\in U^{n\times r}_r$，使得$A=U U\Hermitian$
+\end{theorem}
+
+\subsection{正规矩阵}
+
+\subsubsection{Schur引理与Schur不等式}
+
+\begin{theorem}[Schur引理]
+    任意一个复方阵$A\in \mathbb{C}^{n\times n}$酉相似于一个上三角阵。
+\end{theorem}
+可使用数学归纳法，根据基的扩充定理和施密特正交化证明。
+
+\begin{definition}
+    给定$n$阶方阵$A$，有
+    \[
+        U\Hermitian AU= T=
+        \begin{bmatrix}
+            \lambda_1 & \cdots & *\\
+            & \ddots & \vdots \\
+            && \lambda_n \\
+        \end{bmatrix}
+    \]
+    则有
+    \[
+        A=UTU\Hermitian
+    \]
+    称为$A$的Schur分解。
+\end{definition}
+
+\begin{theorem}[Schur不等式]
+    对给定$n$阶方阵$A=\Big(a_{ij}\Big)_{n\times n}$，特征值为$\VectorComma{\lambda}{n}$，
+    有
+    \[
+        \sum_i |\lambda_i|^2 \leq \sum_i \sum_j |a_{ij}|^2
+    \]
+\end{theorem}
+
+\subsubsection{正规矩阵}
+
+\begin{definition}[正规矩阵]
+    对方阵$A$，若$AA\Hermitian=A\Hermitian A$，称为\textkw{正规矩阵}。
+    实数域上称实正规矩阵。
+\end{definition}
+
+\begin{lemma}
+    与正规矩阵酉相似的矩阵一定是正规矩阵。
+\end{lemma}
+
+\begin{lemma}
+    同时是正规矩阵、三角形矩阵，则必然是对角矩阵。
+\end{lemma}
+
+\begin{theorem}
+    正规矩阵的充要条件是酉相似于对角矩阵。
+\end{theorem}
+
+\begin{corollary}
+    正规矩阵有n个线性无关特征向量，且对应不同特征值的特征向量互相正交。
+\end{corollary}
+
+\begin{theorem}
+    对正规矩阵：
+    \begin{itemize}
+        \item 是Hermite矩阵，当且仅当，特征值全部落在实轴上。
+        \item 是反Hermite矩阵，当且仅当，特征值全部落在虚轴上。
+        \item 是酉矩阵，当且仅当，特征值全部落在单位圆上。
+    \end{itemize}
+\end{theorem}
+
+\subsection{Hermite二次型}
+\subsubsection{Hermite矩阵}
+
+\begin{theorem}
+    对Hermite矩阵$A$，有：
+    \begin{itemize}
+        \item $A\Hermitian A,AA\Hermitian$都是Hermite矩阵。
+        \item $A+A\Hermitian$是Hermite矩阵，但$A-A\Hermitian$是反Hermite矩阵。
+        \item $A^k$是Hermite矩阵，若可逆，$A^{-1}$也是Hermite矩阵。
+        \item $\lambda\in \mathbb{R}$，则$\lambda A$是Hermite矩阵，$\lambda iA$是反Hermite矩阵。
+    \end{itemize}
+    对Hermite矩阵$A,B$，有：
+    \begin{itemize}
+        \item 实系数线性组合也是Hermite矩阵。
+        \item 乘积$AB$是Hermite矩阵当且仅当可交换。
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+    对方阵$A\in\mathbb{C}^n$，以下三项等价：
+    \begin{itemize}
+        \item $A$是Hermite矩阵
+        \item $\forall X\in \mathbb{C}^n$，$X^H A X$是实数
+        \item $\forall B\in \mathbb{C}^{n\times n}$，$B^H A B$是Hermite矩阵
+    \end{itemize}
+\end{theorem}
+
+\subsubsection{Hermite二次型}
+
+\begin{definition}[Hermite二次型]
+    $n$个复变量$\VectorComma{x}{n}$，二次齐次多项式
+    \[
+        f(\VectorComma{x}{n})=\sum_{i,j} a_{ij} \overline{x_i} x_j
+    \]
+    其中$a_{ij}=\overline{a_{ji}}$，
+    则称为\textkw{Hermite二次型}。
+
+    类似实数域上二次型的记号，
+    记向量$X=(\VectorComma{x}{n})\Transpose$，矩阵$A=\Big(a_{ij}\Big)_{m\times n}$，
+    则
+    \[
+        f(\VectorComma{x}{n}) = X\Hermitian A X
+    \]
+    其中矩阵$A$称为\textkw{Hermite二次型的的矩阵}，是一个Hermite阵，
+    $A$的秩为\textkw{Hermite二次型的秩}。
+\end{definition}
+
+可以对Hermite二次型进行可逆线性替换，即使用$X=CY$，其中$C$为可逆方阵，代替，得到
+\[
+    X\Hermitian A X = Y\Hermitian C\Hermitian A C Y = Y\Hermitian B Y
+\]
+
+\begin{definition}
+    矩阵为对角矩阵的Hermite二次型
+    \[
+        f()=\lambda_1\overline{x_1}x_1+\lambda_2\overline{x_2}x_2+\dots+\lambda_n\overline{x_n}x_n
+    \]
+    称为二次型的标准型。
+\end{definition}
+
+\begin{theorem}
+    对给定Hermite二次型，总是存在酉线性替换将其转化为标准型。
+    存在举例：标准型的对角矩阵的对角线元素为原矩阵的特征值。
+    这一线性替换的分解就是原矩阵的特征值分解。
+    但线性替换是合同不是相似，不要求酉线性替换的情况下，变换结果对角矩阵不唯一。
+\end{theorem}
+
+\begin{definition}
+    矩阵为对角矩阵，且对角线上元素具有前$s$个为$1$，然后$r-s$个元素为$-1$，其余$n-r$个为$0$的形式
+    \[
+        f()=\overline{x_1}x_1+\dots+\overline{x_s}x_s-\overline{x_{s+1}}x_{s+1}-\dots-\overline{x_r}x_r
+    \]
+    的二次型称为二次型的规范型。
+\end{definition}
+
+\begin{theorem}
+    对给定Hermite二次型，总是存在唯一对应的规范型。
+    矩阵的标准型总是有固定的正系数、负系数、零系数项（正负惯性指数），
+    将其按这个顺序重排并将其绝对值平方根转换到两侧线性替换中，则得到规范型矩阵。
+\end{theorem}
+
+\subsubsection{正定Hermite二次型}
+
+由Hermite矩阵的性质，对任意$X$都有$X\Hermitian AX$为实数，因此Hermite二次型结果总是实数。
+
+\begin{definition}[正定~半正定]
+    对Hermite矩阵$A$，
+    若$\forall X\in \mathbb{C}^{n}\setminus\{\bm{0}\},X\Hermitian AX>0$，称$A$正定；
+    若$\forall X\in \mathbb{C}^{n}, X\Hermitian AX \geq 0$，称$A$半正定。
+\end{definition}
+
+\begin{theorem}
+    对给定Hermite二次型$f(X)=X\Hermitian AX$，以下各项等价：
+    \begin{itemize}
+        \item $f(X)$正定
+        \item 对任意可逆$P$，$P\Hermitian AP$正定
+        \item $A$的$n$个特征值均为正数（正惯性指数为$n$）
+        \item 存在可逆$P$，$P\Hermitian AP=I$（规范型）
+        \item 存在可逆$Q$，$A=Q\Hermitian Q$（上一条的推论）
+        \item 存在正线上三角$R$，$A=R\Hermitian R$
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+    对给定Hermite二次型$f(X)=X\Hermitian AX$，以下各项等价：
+    \begin{itemize}
+        \item $f(X)$半正定
+        \item 对任意可逆$P$，$P\Hermitian AP$半正定
+        \item $A$的$n$个特征值均为非负实数（负惯性指数为$0$）
+        \item 存在可逆$P$，$P\Hermitian AP=\DiagMatrix(I_r, \bm{0})$（规范型）
+        \item 存在秩为$r$的$n$阶方阵$Q$，$A=Q\Hermitian Q$（上一条推论）
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}
+    $A$为正定（半正定）Hermite矩阵，则存在唯一的正定（半正定）$Q$，满足$A=Q^2$。
+    记为$Q=A^{\frac{1}{2}}$。
+\end{theorem}
+
+\subsubsection{Hermite矩阵偶合同标准型}
+
+\begin{theorem}
+    对给定二次型$A,B$，若$B$正定，存在非退化线性替换$X=PY$同时满足：
+    \begin{gather*}
+        P\Hermitian AP = \sum_{i=1}^n \lambda_i \overline{y_i} y_i \\
+        P\Hermitian BP = \sum_{i=1}^n \overline{y_i} y_i
+    \end{gather*}
+    其中$\lambda_i$是$|\lambda B-A|=0$的根，且均为实数。
+\end{theorem}
+
+先对角化$B$并化为规范型，即$P_1\Hermitian BP_1=I$，其中$P_1$可逆，
+因此$P_1\Hermitian AP_1$也是正定矩阵，
+然后酉相似对角化$P_1\Hermitian AP_1$，
+得到$P_2\Hermitian P_1\Hermitian A P_1 P_2=\Lambda$，
+其中$P_2$为酉矩阵。
+此时有$P_2\Hermitian P_1\Hermitian B P_1 P_2 = P_2\Hermitian I P_2 = I$，
+因此可逆矩阵$P=P_1 P_2$即为符合条件的方阵。
+
+\begin{definition}
+    对给定$n$阶Hermite矩阵$A,B$，其中$B$正定，则使方程
+    \[
+        AX=\lambda BX
+    \]
+    有非零解的$\lambda$的充要条件是
+    \[
+        |\lambda B-A|=0
+    \]
+    类比与特征方程、特征值与特征向量，
+    称这个关于$\lambda$的方程为矩阵$A$相对于矩阵$B$的特征方程，
+    根$\VectorComma{\lambda}{n}$为$A$相对于$B$的广义特征值，
+    关于$\lambda=\lambda_i$时$X$的方程的解向量为对应$\lambda_i$的广义特征向量。
+\end{definition}
+
+\begin{property}
+    给定Hermite矩阵$A,B$，其中$B$正定，则$A$相对于$B$，
+    总是有$n$个广义特征值，且分别对应$n$个线性无关的广义特征向量。
+    适当选取广义特征向量$\VectorComma{X}{n}$，
+    可满足$X_i\Hermitian B X_j=\delta_{ij},X_i\Hermitian A X_j = \lambda_j\delta_{ij}$
+\end{property}
+
+\section{矩阵的分解}
+\subsection{满秩分解}
+
+\begin{definition}[满秩分解]
+    对矩阵$A\in \mathbb{C}^{m\times n}_r$，
+    $\exists B\in \mathbb{C}^{m\times r}_r, C\in \mathbb{C}^{r\times n}_r$，
+    使得$A=BC$，称为矩阵的满秩分解。
+\end{definition}
+
+求解方法：
+\begin{enumerate}
+    \item 将矩阵$A$化为行最简形/rref得到$R$，获得主元位置。
+    \item $A$中主元所在列构成$B$。
+    \item $R$中主元所在行构成$C$。
+\end{enumerate}
+
+\begin{theorem}
+    矩阵的满秩分解不唯一，若$A=BC=B_1 C_1$均为$A$的满秩分解，有：
+    $\exists \theta\in \mathbb{C}^{n\times n}_n, B=B_1 \theta, C=\theta^{-1} C_1$，且
+    具有不变量$C\Hermitian(C C\Hermitian)^{-1} (B\Hermitian B)^{-1} B\Hermitian$。
+\end{theorem}
+
+\subsection{正交三角分解}
+
+\begin{definition}[正交三角分解]
+    给定可逆方阵$A\in \mathbb{C}^{n\times n}_n$，存在唯一的酉矩阵$U$和正线上三角阵$R$使得$A=UR$；
+    对于转置的情况，存在唯一的酉矩阵$U_1$和正线下三角阵$R_1$使得$A=R_1 U_1$
+\end{definition}
+
+\begin{theorem}
+    给定矩阵$A\in \mathbb{C}^{m\times r}_r$，存在唯一的次酉矩阵$U\in U^{m\times r}$和$r$阶正线上三角矩阵$R$使得$A=UR$。
+\end{theorem}
+
+求法：
+\begin{enumerate}
+    \item 将$A$的列向量组施密特正交化得到$U$。
+    \item $A=UR\Rightarrow R=U\Hermitian A$
+\end{enumerate}
+
+\begin{corollary}
+    对给定矩阵$A\in \mathbb{C}^{m\times n}_r$，存在一个分解$A=U_1 R_1 L_2 U_2$，
+    其中$U_1\in U^{m\times r},U_2\in U^{r\times n}$，且$R_1,L_2$为$r$阶上三角阵和下三角阵。
+\end{corollary}
+
+\subsection{奇异值分解}
+
+\begin{lemma}
+    对任意矩阵$A$，有$r(AA\Hermitian)=r(A\Hermitian A)=r(A)$
+\end{lemma}
+
+\begin{lemma}
+    对任意矩阵$A$，有$AA\Hermitian$和$A\Hermitian A$都是半正定Hermite阵。
+\end{lemma}
+
+\begin{theorem}
+    对任意矩阵$A\in \mathbb{C}^{m\times n}_r$，记
+    $AA\Hermitian$的特征值从大到小排列为$\lambda_1\geq \lambda_2\geq \dots \geq \lambda_r > \lambda_{r+1}=\dots = \lambda_m = 0$，
+    $A\Hermitian A$的特征值从大到小排列为$\mu_1\geq \mu_2\geq \dots \geq \mu_r > \mu_{r+1}=\dots = \mu_n = 0$，
+    则有$\lambda_i = \mu_i >0, i=1,2,\dots,r$。
+\end{theorem}
+
+\begin{theorem}
+    对正规矩阵$A$，$AA\Hermitian$和$A\Hermitian A$的特征值是$A$的特征值的模长平方。
+\end{theorem}
+
+\begin{definition}[奇异值]
+    对矩阵$A\in \mathbb{C}^{m\times n}_r$，记$AA\Hermitian$的非零特征值从大到小排列为$\VectorComma{\lambda}{r}$，
+    称$\sigma_i = \sqrt{\lambda_i} = \sqrt{\mu_i} > 0$为矩阵的正奇异值，简称奇异值。
+\end{definition}
+
+\begin{theorem}
+    对矩阵$A\in \mathbb{C}^{m\times n}_r$，记奇异值为$\sigma_1\geq \sigma_2\geq \dots \sigma_r$，
+    则存在$U\in U^{m\times m},V\in U^{n\times n}$，
+    使得$U\Hermitian AV=\begin{bmatrix}\Delta & \bm{0} \\ \bm{0} & \bm{0} \end{bmatrix}$，
+    其中$\Delta = \DiagMatrix(\VectorComma{\sigma}{r})$为奇异值由大到小排列构成的对角阵，
+    填充$0$后的矩阵为$m\times n$矩阵。
+\end{theorem}
+
+\begin{definition}[奇异值分解]
+    对矩阵$A$，定义$A=U\begin{bmatrix}\Delta & \bm{0} \\ \bm{0} & \bm{0} \end{bmatrix} V\Hermitian$为矩阵的奇异值分解式。
+\end{definition}
+
+考虑将$U,V$的前$r$列与后$m-r$和$n-r$列分块，则得到$A=U_1 \Delta V_1$，即：
+\begin{corollary}
+    对矩阵$A\in \mathbb{C}^{m\times n}_r$，记奇异值为$\sigma_1\geq \sigma_2\geq \dots \sigma_r$，
+    存在次酉矩阵$U\in U^{m\times r},V\in U^{r\times n}$，使得$A = U \Sigma V\Hermitian$
+\end{corollary}
+
+求解方法：
+\begin{enumerate}
+    \item 计算$AA\Hermitian$（或$A\Hermitian A$）。
+    \item 特征值分解$AA\Hermitian$（或$A\Hermitian A$），得到特征值$\VectorComma{\lambda}{r}$，以及对应标准正交特征向量组，分别构成对角矩阵$\Delta$和酉矩阵$U$（或$V$）。
+    \item 将$U$分块，记对应非零特征值的前$r$列为$U_1$，对应特征值$0$的后$m-r$列为$U_2$。同样记$V$的前$r$列与后$n-r$列为$V_1,V_2$。
+    \item $A=U_1\Delta V_1\Hermitian\Rightarrow U_1=A V_1\Delta^{-1} V_1, = A\Hermitian U_1\Delta^{-1}$。求出另一个矩阵前$r$列。
+    \item 选取使得$V$（或$U$）是酉矩阵的$V_2$（或$U_2$）。可通过选取线性无关向量进行施密特正交化完成。
+\end{enumerate}
+
+\subsection{极分解}
+
+\begin{definition}[极分解]
+    对可逆矩阵$A\in \mathbb{C}^{n\times n}_n$，存在$U\in U^{n\times n}$与正定$H_1,H_2$满足$A=H_1 U=U H_2$。
+    分解唯一且$AA\Hermitian = H_1^2, A\Hermitian A = H_2^2$，称为矩阵的极分解表达式。
+    对一般矩阵$A\in\mathbb{C}^{n\times n}_r$，存在$U\in U^{n\times n}$与半正定$H_1,H_2$满足以上各式。
+\end{definition}
+
+\begin{theorem}[使用奇异值分解表达极分解]
+    \[
+        A=U\Delta V=
+        \underbrace{U\Delta U\Hermitian}_{H_1} \underbrace{UV}_{U}=
+        \underbrace{UV}_{U} \underbrace{V\Hermitian \Delta V}_{H_2}
+    \]
+\end{theorem}
+
+\begin{theorem}
+    正规矩阵当且仅当极分解为$A=HU=UH$。且此时$A\Hermitian A=H^2$
+\end{theorem}
+
+\subsection{谱分解}
+
+\begin{definition}[谱分解]
+    对正规矩阵$A\in \mathbb{C}^{n\times n}$，
+    将其特征值分解后按特征值矩阵的对角元素分块，得到
+    \[
+        A = \lambda_1 \alpha_1 \alpha_1\Hermitian
+        + \lambda_2 \alpha_2\alpha_2\Hermitian+\dots
+        +\lambda_n \alpha_n\alpha_n\Hermitian
+    \]
+    称为矩阵$A$的谱分解表达式。
+\end{definition}
+
+将各项按特征值合并，得到$A=\sum\limits_i\lambda_i \sum\limits_j \alpha_{ij}\alpha_{ij}\Hermitian=\sum\limits_i\lambda_i G_i$，
+其中$G_i=\sigma_j \alpha_j\alpha_j\Hermitian$，是正交的投影矩阵的和，也有投影矩阵的性质（Hermite、幂等），
+同时$G_i$间两两正交，故称为正交投影矩阵。
+
+\begin{theorem}
+    对矩阵$A$，有$n$个互异特征值$\VectorComma{\lambda}{s}$，且其中第$i$个特征值的重数为$n_i$，则有：
+    $A$正交当且仅当存在$s$个$n$阶矩阵$\VectorComma{G}{s}$满足：
+    \begin{itemize}
+        \item $A=\sum\limits_i\lambda_i G_i$
+        \item $G=G\Hermitian,G=G^2$
+        \item $G_i G_k = 0(i\neq k)$
+        \item $\sum\limits_i G_i = I$
+        \item $\RankOf(G_i)=n_i$
+    \end{itemize}
+    此时后者仅存在唯一一组。
+\end{theorem}
+
+求解步骤：
+对给定可对角化矩阵：
+\begin{itemize}
+    \item 求出全部互异特征值$\VectorComma{\lambda}{s}$。
+    \item 求解每个特征值$\lambda_i$的线性无关特征向量$\VectorRComma{\alpha}{n_i}{i}$，得到变换矩阵$P$。
+    \item 对$P=[\VectorComma{\alpha}{n}]$，将$P^{-\mathrm{T}}$按行分块记为$[\VectorComma{\beta}{n}]$。
+    \item 令$G_i=\sum\limits_j \alpha_{ij}\beta_{ij}\Transpose$
+    \item 得到$A=\sum\limits_i \lambda_i G_i$
+\end{itemize}
+
+\section{向量与矩阵范数}
+\subsection{向量范数}
+\subsubsection{定义}
+
+\begin{definition}[范数]
+    给定$F$上的线性空间$V$，对函数$\|\cdot\|:V\to \mathbb{R},\alpha\mapsto \|\alpha\|$，若满足：
+    \begin{itemize}
+        \item 非负：$\forall \alpha\in V, \|\alpha\|\geq 0$，且$\|\alpha\|=0\Leftrightarrow \alpha=\bm{0}$
+        \item 齐次：$\|k\alpha\|=|k| \|\alpha\|,\forall k\in F, \alpha\in V$
+        \item 三角不等式：$\|\alpha+\beta\|\leq \|\alpha\|+\|\beta\|, \forall \alpha,\beta \in V$
+    \end{itemize}
+    则称$\|\alpha\|$是$\alpha$的一个范数。
+\end{definition}
+
+\subsubsection{常见向量范数}
+
+\begin{lemma}[H\"{o}lder不等式]
+    \[
+        \sum_{i=1}^{n}\left|a_{i} b_{i}\right| \leq
+        \left(\sum_{i=1}^{n}\left|a_{i}\right|^{p}\right)^{\frac{1}{p}}
+        \left(\sum_{i=1}^{n}\left|b_{i}\right|^{q}\right)^{\frac{1}{q}}
+    \]
+    其中$p>1, q>1, 1/p + 1/q=1$
+\end{lemma}
+先证明$uv\leq \frac{u^p}{p}+\frac{v^q}{q}$，然后令$u=\frac{a_k}{a},v=\frac{b_k}{b}$，
+求和后令$a=\left( \sum\limits_k a_k^p \right)^{\frac{1}{p}},b=\left( \sum\limits_k b_k^p \right)^{\frac{1}{q}}$消去$a$和$b$，
+可得上式。
+
+\begin{lemma}[Minkowski不等式]
+    \[
+        \left(\sum_{i=1}^{n}\left|a_{i} + b_{i}\right|^p\right)^{\frac{1}{p}} \leq
+        \left(\sum_{i=1}^{n}\left|a_{i}\right|^{p}\right)^{\frac{1}{p}} +
+        \left(\sum_{i=1}^{n}\left|b_{i}\right|^{p}\right)^{\frac{1}{p}}
+    \]
+\end{lemma}
+
+由于$|\cdot|^p = |\cdot| |\cdot|^{p-1} = |\cdot| |\cdot|^{p\cdot \frac{p-1}{p}} = |\cdot| (|\cdot|^p)^{\frac{p-1}{p}}$，
+累和后按上面的展开为
+\[
+\begin{split}
+    & \sum\limits_i |a_i+b_i|^p \\
+    \leq& \sum\limits_i |a_i+b_i| |a_i+b_i|^{{p-1}} \\
+    \leq& \sum\limits_i (|a_i|+|b_i|) |a_i+b_i|^{{p-1}} \text{(三角不等式)} \\
+    =& \sum\limits_i |a_i| |a_i+b_i|^{{p-1}} + \sum\limits_i |b_i| |a_i+b_i|^{{p-1}} \\
+    \leq& \left(\sum\limits_j |a_j|^p\right)^\frac{1}{p}
+        \left( \sum\limits_i |a_i+b_i|^{(p-1)q} \right)^{\frac{1}{q}} \\
+        &+ \left(\sum\limits_j |b_j|^p\right)^\frac{1}{p}
+        \left( \sum\limits_i |a_i+b_i|^{(p-1)q} \right)^{\frac{1}{q}} \\
+        &\text{(分别H\"{o}lder不等式)} \\
+    =& \left[\left(\sum\limits_j |a_j|^p\right)^\frac{1}{p}+\left(\sum\limits_j |b_j|^p\right)^\frac{1}{p}\right]
+        \left( \sum\limits_i |a_i+b_i|^p \right)^{1-\frac{1}{p}} \\
+\end{split}
+\]
+约去右侧第二个因式，得到
+\[
+    \left( \sum\limits_i |a_i+b_i|^p \right)^\frac{1}{p} =
+    \left(\sum\limits_j |a_j|^p\right)^\frac{1}{p}+\left(\sum\limits_j |b_j|^p\right)^\frac{1}{p}
+\]
+
+\begin{definition}[$p$-范数]
+    定义向量$\alpha$的$p$-范数为：
+    \[
+        \|\alpha\|_p=(\sum_{i=1}^n |\alpha_i|^p)^{\frac{1}{p}}
+    \]
+\end{definition}
+非负、齐次显然成立，三角不等式由Minkowski不等式保证。
+
+\begin{definition}[$1$-范数~$2$-范数~$\infty$-范数]
+    以下是$p$-范数的常见形式：
+    \begin{itemize}
+        \item 向量$1$-范数：令$p=1$，得
+        \[
+            \|\alpha\|_1= \sum_{i=1}^n |a_i|
+        \]
+        \item 向量$2$-范数：令$p=2$，得
+        \[
+            \|\alpha\|_2= \sqrt{\sum_{i=1}^n |a_i|^2}
+        \]
+        ，与向量长度相同，也称欧氏范数
+        \item 向量$\infty$-范数：令$p\to\infty$，得
+        \[
+            \|\alpha\|_\infty= \max_{i=1}^n |a_i|
+        \]
+    \end{itemize}
+\end{definition}
+
+\subsubsection{向量范数的等价}
+
+\begin{definition}[向量范数的等价]
+    对两个范数$\|\cdot\|_a,\|\cdot\|_b$，若$\exists d_1,d_2\in \mathbb{R}^{+}$，
+    使得$\forall \alpha, d_1 \|\alpha\|_b \leq \|\alpha\|_a \leq d_2 \|\alpha\|_b$，
+    则称两向量范数等价，
+    此时也有$\frac{1}{d_2} \|\alpha\|_a \leq \|\alpha\|_b \leq \frac{1}{d_1} \|\alpha\|_a$成立。
+\end{definition}
+
+\begin{theorem}
+    有限维线性空间$V$上任意两向量范数等价。
+\end{theorem}
+
+\subsubsection{向量范数的构造}
+
+\begin{theorem}
+    对给定线性空间$\mathbb{C}^m$上的范数$\|\cdot\|_b$，若有列满秩矩阵$A\in \mathbb{C}^{m\times n}_n$，
+    则$\|\alpha\|_a=\|A\alpha\|_b$是线性空间$\mathbb{C}^n$上的范数。
+\end{theorem}
+这是将一个线性空间变换到一个更大的线性空间里使用后者的范数作为自己的范数。
+
+\subsection{矩阵范数}
+\subsubsection{定义与Frobenious范数}
+
+\begin{definition}[矩阵范数]
+    对矩阵函数$\|\cdot\|:\mathbb{C}^{m\times n}\to \mathbb{R},A\mapsto \|A\|$，若满足：
+    \begin{itemize}
+        \item 非负：$\forall A\in \mathbb{C}^{m\times n}, \|A\|\geq 0$，且$\|A\|=0\Leftrightarrow A=\bm{0}$
+        \item 齐次：$\|kA\|=|k| \|A\|,\forall k\in F, A\in \mathbb{C}^{m\times n}$
+        \item 三角不等式：$\|A+B\|\leq \|A\|+\|B\|, \forall A,B \in \mathbb{C}^{m\times n}$
+        \item 与乘法相容：$\|AB\|\leq \|A\|\|B\|, \forall A,B \in \mathbb{C}^{m\times n}$
+    \end{itemize}
+    则称$\|A\|$是矩阵$A$的一个范数。
+\end{definition}
+
+简单地想法是把矩阵看作线性空间，然后考虑满足乘法相容的性质，由此我们得到了1-范数，2-范数，$\infty$-范数到矩阵范数的推广：
+\begin{itemize}
+    \item 对矩阵$A=\Big(a_{ij}\Big)_{m\times n}$，$\|A\|=\sum\limits_{i,j}|a_{ij}|$是矩阵的范数。
+    \item 对矩阵$A=\Big(a_{ij}\Big)_{m\times n}$，$\|A\|=\sqrt{\sum\limits_{i,j}|a_{ij}|^2}$是矩阵的范数。
+        一般称为Frobenious范数，记作$\|A\|_F$。
+    \item 对方阵$A=\Big(a_{ij}\Big)_{n\times n}$，$\|A\|=n \max\limits_{i,j}|a_{ij}|$是矩阵的范数。
+\end{itemize}
+
+\begin{definition}
+    与向量范数类似地，
+    对两个矩阵范数$\|\cdot\|_a,\|\cdot\|_b$，若$\exists d_1,d_2\in \mathbb{R}^{+}$，
+    使得$\forall \alpha, d_1 \|\alpha\|_b \leq \|\alpha\|_a \leq d_2 \|\alpha\|_b$，
+    则称两矩阵范数等价，
+    此时也有$\frac{1}{d_2} \|\alpha\|_a \leq \|\alpha\|_b \leq \frac{1}{d_1} \|\alpha\|_a$成立。
+\end{definition}
+
+\begin{theorem}
+    对两种不同的矩阵范数$\|A\|_\alpha,\|B\|_\beta$，总是存在$d_1,d_2\in \mathbb{R}^{+}$使其等价。
+\end{theorem}
+
+\begin{definition}[Frobenious范数]
+    \[
+        \|A\|_F=\sqrt{\sum_{i,j}|a_{ij}|^2}=\sqrt{\TraceOf(AA\Hermitian)}=\sqrt{\TraceOf(A\Hermitian A)}
+    \]
+\end{definition}
+
+\begin{property}
+    F范数$\|\cdot\|_F$具有以下性质：
+    \begin{itemize}
+        \item 将矩阵$A$的列向量组记为$\VectorComma{\alpha}{n}$，则$\|A\|_F^2=\sum\limits_i \|\alpha_i\|_2^2$
+        \item $\|A\|_F^2=\TraceOf(AA\Hermitian)=\sum_i \lambda_i(AA\Hermitian)$，其中$\lambda_i(A)$指$A$的第$i$个特征值
+        \item 共轭转置、乘以酉矩阵都不改变矩阵的F范数。
+    \end{itemize}
+\end{property}
+
+\subsubsection{诱导范数}
+
+\begin{definition}[矩阵范数和向量范数相容]
+    对向量范数$\|X\|_\alpha$与矩阵范数$\|A\|_\beta$，若对任意$X,A$都有：
+    $\|AX\|_\alpha\linebreak[1] \leq \|A\|_\beta \|X\|_\alpha$
+    则称矩阵范数$\|A\|_{\beta}$与向量范数$\|X\|_\alpha$是相容的。
+\end{definition}
+
+\begin{theorem}
+    矩阵Frobenious范数与向量2-范数相容。
+\end{theorem}
+
+\begin{definition}[诱导范数]
+    对向量范数$\|X\|_\alpha$，定义
+    \[
+        \|A\|_i = \max_{X\neq \bm{0}} \frac{\|AX\|_\alpha}{\|X\|_\alpha}
+    \]
+    则$\|A\|_i$是一个矩阵范数，且与$\|X\|_\alpha$相容。
+    称这个矩阵范数为由向量范数$\|X\|_\alpha$所诱导的\textkw{诱导范数}或\textkw{算子范数}。
+\end{definition}
+
+对任意一个诱导范数，总有$\|I\|=1$。但不是所有的范数都是诱导范数。
+
+\begin{definition}[矩阵$p$-范数]
+    由向量的$p$-范数诱导的矩阵范数称为矩阵的$p$-范数。
+\end{definition}
+
+\begin{definition}[矩阵$1$-范数~矩阵$2$-范数~矩阵$\infty$-范数]
+    以下是矩阵$p$-范数的常见形式：
+    \begin{itemize}
+        \item 矩阵$1$-范数：由$\|A\|_1=\max\limits_{X\neq \bm{0}} \frac{\|AX\|_1}{\|X\|_1}$，
+        考虑$\|AX\|_1\leq \sum\limits_i |x_i|\|\alpha_i\|_1 \leq \sum\limits_i |x_i| \cdot \max\limits_i \|\alpha_i\|_1$，
+        等号取在$\|x\|$是标准基向量时，得
+        \[
+            \|A\|_1= \max_j \sum_i |a_{ij}|
+        \]
+        为列绝对值之和的最大值，称为\textkw{列和范数}。最大值取在$\|X\|$是标准基向量时。
+
+        \item 矩阵$2$-范数：由$\|A\|_2=\max\limits_{X\neq \bm{0}} \frac{\|AX\|_2}{\|X\|_2}$，
+        考虑$\frac{\|AX\|_2}{\|X\|_2}=\frac{X\Hermitian A\Hermitian AX}{X\Hermitian X}$，
+        然后对角化$A\Hermitian A$，
+        则$\text{上式}=\frac{Y\Hermitian \Lambda Y}{Y\Hermitian Y}=\frac{\sum\limits_i \lambda_i y_i\Hermitian y_i}{\sum\limits_i y_i\Hermitian y_i}$，得
+        \[
+            \|A\|_2 = \max_i \sqrt{\lambda_i(A\Hermitian A)}
+        \]
+        为$A\Hermitian A$最大特征值平方根，即$A$的最大奇异值，称为\textkw{谱范数}。最大值取在$\|X\|$是$A\Hermitian A$对应这一特征值的特征向量时。
+
+        \item 矩阵$\infty$-范数：由$\|A\|_\infty=\max\limits_{X\neq \bm{0}} \frac{\|AX\|_\infty}{\|X\|_\infty}$，
+        考虑$\|AX\|_\infty\linebreak[1] = \max\limits_i \left|\sum\limits_j a_{ij} x_j \right| \leq \max\limits_i \sum\limits_j |a_{ij}| |x_j|$，
+        等号取在$x_j$和$a_{ij}$成比例时，
+        然后$\text{上式} \leq \max\limits_i \sum\limits_j |\alpha_{ij}| \cdot \max\limits_k |x_k| = \|X\|_\infty \max\limits_i \sum\limits_j |a_{ij}|$，
+        得
+        \[
+            \|A\|_\infty= \max_i \sum_j |a_{ij}|
+        \]
+        为行绝对值之和的最大值，称为\textkw{行和范数}。最大值取在$\|X\|$中所有项按$A$的最大行的符号选择$\pm 1$时。
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    $\|AA\Hermitian\|_2 = \|A\Hermitian A\|_2 = \|A\|_2^2$
+\end{theorem}
+原因是$AA\Hermitian$和$A\Hermitian A$是Hermite阵，$(A\Hermitian A)\Hermitian A\Hermitian A= \linebreak[1] (A\Hermitian A)^2$，
+而同时$A^2$的特征值就是$A$的特征值平方。
+
+与由向量范数诱导矩阵范数相反的方向：
+\begin{theorem}
+    对给定矩阵范数$\|A\|_{*}$，存在向量范数$\|X\|$使得$\|AX\|\leq \|A\|_{*} \|X\|$。
+\end{theorem}
+可验证对任意$\alpha\neq \bm{0}$，$\|X\|=\|X\alpha\Hermitian \|_{*}$总符合向量范数的定义，且总满足上式。
+
+\subsubsection{矩阵谱半径}
+
+\begin{definition}[谱半径]
+    对方阵$A$，记其特征值为$\VectorComma{\lambda}{n}$，称
+    \[
+        \rho(A) = \max_i |\lambda_i|
+    \]
+    为矩阵$A$的\textkw{谱半径}。
+\end{definition}
+
+\begin{theorem}
+    对任意矩阵范数$\|\cdot\|$，对任意方阵$A$总有
+    \[
+        \rho(A) \leq \|A\|
+    \]
+\end{theorem}
+由于特征值定义，$AX=\lambda X$，取范数则有$|\lambda| \|X\| = \|AX\| \leq \|A\|\|X\|$，
+因此$|\lambda| \leq \|A\|$，则特征值最大值也比右侧小。
+
+\begin{theorem}
+    对正规矩阵$A$，有$\rho(A)=\|A\|_2$
+\end{theorem}
+这是因为$A=U\Lambda U\Hermitian$时，
+有$A\Hermitian A=U\Lambda^H U\Hermitian U \Lambda U\Hermitian \linebreak[1]=U\overline{\Lambda} \Lambda U^H$，
+因此$\lambda_i(A\Hermitian A)=\overline{\lambda_i(A)}\lambda_i(A)=|\lambda_i(A)|^2$，
+两侧加上$\max$得到$\|A\|_2^2=\rho^2(A)$。
+
+\begin{theorem}
+    \[
+        \|A\|_2^2 \leq \|A\|_1 \|A\|_\infty
+    \]
+\end{theorem}
+考虑$A\Hermitian A$取无穷范数，
+\[
+    \rho(A\Hermitian A) \leq \|A\Hermitian A\|_\infty = \|A\Hermitian\|_\infty \|A\|_\infty = \|A\|_1 \|A\|_\infty
+\]
+
+\subsection{矩阵序列、极限、级数*}
+
+\section{矩阵函数}
+
+\subsection{矩阵的多项式表示与极小多项式}
+
+\begin{definition}
+    对多项式$f(x)=a_n x^n+a_{n-1} x^{n-1}+\dots+a_1 x+a_0$和方阵$A$，
+    称$f(A)=a_n A^n+a_{n-1} A^{n-1} + \dots + a_1 A + a_0 I$为\textkw{矩阵多项式}。
+\end{definition}
+
+表示成Jordan标准型，则
+\begin{definition}
+    若$A=PJP^{-1}$，则$f(A)=Pf(J)P^{-1}=P \DiagMatrix(f(J_1), f(J_2), \dots, f(J_s)) P^{-1}$，
+    称为矩阵多项式的Jordan表示。
+\end{definition}
+
+由Jordan块的特点，
+\begin{gather*}
+    J_i =
+    \begin{bmatrix}
+        \lambda_i & 1 && \\
+        & \lambda_i & \ddots & \\
+        & & \ddots & 1 \\
+        & & & \lambda_i
+    \end{bmatrix}_{d_i\times d_i} \\
+    J_i^k =
+    \begin{bmatrix}
+        \lambda_i^k & {k\choose 1}\lambda_i^{k-1} & \cdots & {k \choose d_i-1}\lambda_i^{k-d_i+1} \\
+        & \lambda_i^k & \ddots & \vdots \\
+        && \ddots & {k\choose 1}\lambda_i^{k-1} \\
+        &&& \lambda_i^k \\
+    \end{bmatrix} \\
+    f(J_i) =
+    \begin{bmatrix}
+        f(\lambda_i) & \frac{1}{1!}f'(\lambda_i) & \cdots & \frac{1}{(d_i-1)!} f^{(d_i-1)}(\lambda_i) \\
+        & f(\lambda_i) & \ddots & \vdots \\
+        && \ddots & \frac{1}{1!}f'(\lambda_i) \\
+        &&& f(\lambda_i)
+    \end{bmatrix}
+\end{gather*}
+因此$f(A)$可以被进一步简化用于运算。
+
+\begin{definition}[零化多项式]
+    给定方阵$A$和多项式$f(x)$，若$f(A)=\bm{0}$，称$f(x)$是$A$的\textkw{零化多项式}。
+\end{definition}
+
+\begin{theorem}[Hamilton-Cayley定理]
+    对方阵$A$，特征多项式$f(\lambda)=\det{(\lambda I - A)}$是其零化多项式。
+\end{theorem}
+
+\begin{definition}[最小多项式]
+    对方阵$A$，其全部零化多项式中次数最低且首项系数为$1$的称为其\textkw{最小多项式}，通常记为$m(\lambda)$。
+\end{definition}
+
+\begin{property}
+    已知$A\in \mathbb{C}^{n\times n}$，关于$A$的最小多项式：
+    \begin{itemize}
+        \item 最小多项式唯一
+        \item 最小多项式整除任一零化多项式
+        \item 相似矩阵有相同最小多项式
+    \end{itemize}
+\end{property}
+
+求解方法：
+\begin{enumerate}
+    \item 将矩阵化为Jordan标准型。
+    \item 对Jordan块：$m(\lambda) = (\lambda - \lambda_i)^{d_i}$
+    \item 对分块对角矩阵：最小多项式为各分块最小多项式的最小公倍式。
+\end{enumerate}
+
+\subsection{矩阵函数*}
+
+\begin{definition}
+    类似多项式逼近的方式定义：
+    \begin{itemize}
+        \item $\exp A = \sum\limits_{n=0}^\infty \frac{1}{n!} A^n = I + A + \frac{1}{2!} A^2 + \frac{1}{3!} A^3 + \dots$
+        \item $\sin A = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n+1)!} A^(2n+1) = A - \frac{1}{3!} A^3 + \frac{1}{5!} A^5 - \dots$
+        \item $\cos A = \sum\limits_{n=0}^\infty \frac{(-1)^n}{(2n)!} A^(2n) = I - \frac{1}{2!} A^2 + \frac{1}{4!} A^4 - \dots$
+    \end{itemize}
+\end{definition}
+
+\section{函数矩阵和矩阵微分方程*}
+
+\section{广义逆矩阵}
+\subsection{广义逆矩阵}
+
+\begin{definition}[广义逆矩阵]
+    对数域$F$上的矩阵$A\in F^{m\times n}_r$，矩阵方程$AXA=A$总有解。
+    考虑将$A$变为标准型的分解$A=P\DiagMatrix(I_r, \bm{0})Q$，方程的通解可以表示为
+    \[
+        X=Q^{-1}
+        \begin{bmatrix}
+            I_r & B_{(m-r) \times r} \\
+            C_{r\times (n-r)} & D_{(m-r)\times (n-r)}
+        \end{bmatrix}
+        P^{-1}
+    \]
+    其中$B,C,D$是满足标注大小的任意矩阵。
+    这样的矩阵称为$A$的\textkw{广义逆矩阵}，简称\textkw{广义逆}，记为$A^{-}$。
+\end{definition}
+
+由定义中$X$的表达形式可知，若$m=n=r$，则$X=A^{-1}$。
+
+\begin{theorem}[非齐次方程组相容性定理]
+    非齐次线性方程组$AX=\beta$有解当且仅当$\beta=AA^{-}\beta$。
+\end{theorem}
+
+\begin{theorem}[非齐次线性方程组解的结构定理]
+    非齐次线性方程组$AX=\beta$的通解为$X=A^{-} \beta$，其中$A^{-}$取遍$A$的所有广义逆。
+\end{theorem}
+
+\begin{theorem}[齐次线性方程组解的结构定理]
+    齐次线性方程组$AX=\bm{0}$的通解为$X=(I_n-A^{-}A)Z$，
+    其中$A^{-}$是$A$任意给定的广义逆，$Z$取遍任意一个$n$维列向量。
+\end{theorem}
+
+\begin{corollary}
+    非齐次线性方程组$AX=\beta$有解，则通解为$X=A^{-} \beta+(I_n-A^{-} A)Z$，
+    其中$A^{-}$是$A$任意给定的广义逆，$Z$取遍任意一个$n$维列向量。
+\end{corollary}
+
+\subsection{伪逆矩阵}
+
+\begin{definition}[伪逆矩阵]
+    对矩阵$A\in \mathbb{C}^{m\times n}$，若存在$M\in \mathbb{C}^{n\times m}$，满足：
+    \begin{itemize}
+        \item $AMA=A$
+        \item $MAM=M$
+        \item $(AM)\Hermitian = AM$
+        \item $(MA)\Hermitian = MA$
+    \end{itemize}
+    则称$M$为$A$的\textkw{伪逆矩阵}，记作$A^{+}$，或$A^{\dagger}$。以上条件称为{Moore-Penrose方程}。
+\end{definition}
+由定义，伪逆矩阵是一个广义逆矩阵，且当$A$可逆时取$A^{-1}$。
+
+\begin{theorem}[伪逆矩阵的求解]
+    对矩阵$A\in \mathbb{C}^{m\times n}$，将矩阵进行满秩分解$A=BC$，则：
+    \[
+        A^+ = C\Hermitian (CC\Hermitian)^{-1} (B\Hermitian B)^{-1} B\Hermitian
+    \]
+    是$A$的伪逆矩阵。
+\end{theorem}
+
+\begin{theorem}
+    伪逆矩阵唯一。
+\end{theorem}
+
+\begin{property}
+    \begin{gather*}
+        \left(A^{+}\right)^{+}=A \\
+        \left(A A^{H}\right)^{+}=\left(A^{H}\right)^{+} A^{+}=\left(A^{+}\right)^{H} A^{+} \\
+        \left(A^{H} A\right)^{+}=A^{+}\left(A^{H}\right)^{+}=A^{+}\left(A^{+}\right)^{H} \\
+        A^{+}=A^{H}\left(A A^{H}\right)^{+}=\left(A^{H} A\right)^{+} A^{H}
+    \end{gather*}
+\end{property}
+
+\begin{theorem}[伪逆矩阵的求解2]
+    对给定$A\in \mathbb{C}^{m\times n}_r$，对角化$A\Hermitian A$得$U\Hermitian A\Hermitian A U=\Lambda$，
+    则$A^{+}=U \Lambda^{+} U\Hermitian A\Hermitian$，
+    其中$\Lambda=\DiagMatrix(\VectorComma{\lambda}{r},\linebreak[1]0,\linebreak[1]\dots,\linebreak[1]0)$，
+    $\Lambda^{+}=\DiagMatrix(\lambda_1^{-1},\linebreak[1]\lambda_2^{-1},\linebreak[1]\dots,\linebreak[1]\lambda_r^{-1},\linebreak[1]0,\linebreak[1]\dots,\linebreak[1]0)$。
+\end{theorem}
+
+\begin{theorem}[伪逆矩阵的求解3]
+    对给定$A\in \mathbb{C}^{m\times n}_r$，奇异值分解得$A=U\Sigma V\Hermitian$，
+    则$A^{+} = V \Sigma^{+} U\Hermitian$，
+    其中$\Sigma=\begin{bmatrix}\Delta&\bm{0}\\\bm{0}&\bm{0}\end{bmatrix}_{m\times n}$，
+    $\Sigma^{+}=\begin{bmatrix}\Delta^{-1}&\bm{0}\\\bm{0}&\bm{0}\end{bmatrix}_{n\times m}$。
+\end{theorem}
+
+\subsection{最小二乘解}
+
+\begin{definition}[最小二乘解]
+    对方程组$Ax=b$，给定$x_0\in\mathbb{C}^n$，
+    若$\forall x\in \mathbb{C}^{n}, \|Ax_0-b\|^2\leq \|Ax-b\|^2$，
+    则称$x_0$为$Ax=b$的\textkw{最小二乘解}。
+\end{definition}
+
+\begin{definition}[最佳最小二乘解]
+    对方程组$Ax=b$，给定最小二乘解$x_0$，
+    若对任意最小二乘解$x$，都有$\|x_0\|^2\leq \|x\|^2$，
+    则称$x_0$为$Ax=b$的\textkw{最佳最小二乘解}。
+\end{definition}
+
+\begin{theorem}
+    方程组$Ax=b$的最佳最小二乘解是$x=A^+ b$。
+\end{theorem}

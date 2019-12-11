@@ -1,0 +1,176 @@
+%! Suppress = Unicode
+%! Author = gsxab
+%! Date = 2019/12/11
+
+% Preamble
+\documentclass[twocolumn,hidelinks,a4paper,10pt]{ctexart}
+
+% Packages
+% math
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsopn}
+\usepackage{amsthm}
+\usepackage{bm}
+% calculation
+\usepackage{calc}
+\usepackage{xstring}
+% color
+\usepackage[svgnames]{xcolor}
+%% bib
+%\usepackage{biblatex}
+% font
+%\usepackage{embrac}
+\usepackage{enumitem}
+\usepackage{geometry}
+% footnote
+\usepackage{pfnote}
+% table
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{makecell}
+\usepackage{rotating}
+\usepackage{multirow}
+% illustration
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{subcaption}
+\usepackage{lscape}
+\usepackage{float}
+% index
+\usepackage[noautomatic]{imakeidx}
+% bookmark
+\usepackage[bookmarksnumbered=true]{hyperref}
+
+% 偏右，左侧用于装订。
+\geometry{
+    left=27mm,
+    right=6.3mm,
+    top=12.7mm,
+    bottom=12.7mm,
+    headheight=12.7cm,
+    headsep=4mm,
+%    footskip=12mm,
+    heightrounded,
+}
+
+\setCJKmainfont[BoldFont={SimHei}, ItalicFont={KaiTi}]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{FangSong}
+
+\setCJKfamilyfont{zhsong}{SimSun}
+\setCJKfamilyfont{zhhei}{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
+
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\setsansfont[Mapping=tex-text]{Arial}
+\setmonofont[Mapping=tex-text]{Consolas}
+
+\theoremstyle{plain}
+%\theoremstyle{definition}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{property}[theorem]{性质}
+\newtheorem{examples}{举例}[section]
+\newtheorem{abstraction}{抽象}[section]
+\renewcommand*{\proofname}{证明}
+
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\DiagMatrix}{diag}
+\DeclareMathOperator{\RankOf}{r}
+\DeclareMathOperator{\TraceOf}{tr}
+\DeclareMathOperator{\ud}{d} %用\ud 作为微分算子“d”
+\newcommand{\transpose}{^\mathrm{T}}
+
+\newcommand{\oldemptyset}{\emptyset}
+\renewcommand{\emptyset}{\varnothing}
+
+\newcommand{\VectorBase}[4]{{#1}_1#3\linebreak[1]{#1}_2#3\linebreak[1]#4#3\linebreak[1]{#1}_{#2}}
+\newcommand{\VectorRBase}[5]{{#1}_{#3 1}#4\linebreak[1]{#1}_{#3 2}#4\linebreak[1]#5#4\linebreak[1]{#1}_{#3 #2}}
+\newcommand{\VectorLBase}[5]{{#1}_{1#3}#4\linebreak[1]{#1}_{2#3}#4\linebreak[1]#5#4\linebreak[1]{#1}_{#2#3}}
+
+\newcommand{\VectorComma}[2]{\VectorBase{#1}{#2}{,}{\dots}}
+\newcommand{\VectorRComma}[3]{\VectorRBase{#1}{#2}{#3}{,}{\dots}}
+\newcommand{\VectorLComma}[3]{\VectorLBase{#1}{#2}{#3}{,}{\dots}}
+\newcommand{\Vector}[2]{\VectorBase{#1}{#2}{&}{\dots}}
+\newcommand{\VectorR}[3]{\VectorRBase{#1}{#2}{#3}{&}{\dots}}
+\newcommand{\VectorL}[3]{\VectorLBase{#1}{#2}{#3}{&}{\dots}}
+\newcommand{\VectorNewLine}[2]{\VectorBase{#1}{#2}{\\}{\vdots}}
+\newcommand{\VectorRNewLine}[3]{\VectorRBase{#1}{#2}{#3}{\\}{\vdots}}
+\newcommand{\VectorLNewLine}[3]{\VectorLBase{#1}{#2}{#3}{\\}{\vdots}}
+
+\newcommand{\Matrix}[1]{\begin{bmatrix}
+                            #1
+\end{bmatrix}}
+
+\newcommand{\ExpandVectorComma}[2][n]{\begin{bmatrix}
+                                          \VectorComma{#2}{#1}
+\end{bmatrix}}
+\newcommand{\ExpandVectorTab}[2][n]{\begin{bmatrix}
+                                        \Vector{#2}{#1}
+\end{bmatrix}}
+\newcommand{\ExpandVectorNewLine}[2][n]{\begin{bmatrix}
+                                            \VectorNewLine{#2}{#1}
+\end{bmatrix}}
+\newcommand{\ExpandMatrix}[2][m/n]{
+\StrCut{#1}{/}\tmp\tmptmp
+\begin{bmatrix}
+    \VectorR{#2}{\tmptmp}{1}\\
+    \VectorR{#2}{\tmptmp}{2}\\
+    \vdots&\vdots&\ddots&\vdots\\
+    \VectorR{#2}{\tmptmp}{\tmp}
+\end{bmatrix}
+}
+\newcommand{\Transpose}{^\mathrm{T}}
+\newcommand{\Hermitian}{^\mathrm{H}}
+
+\newcommand{\textkw}[1]{\textsf{\textup{#1}}}
+\newcommand{\indexedword}[1]{#1\index{#1}}
+\newcommand{\indexed}[1]{\foreachdo{\indexedword}{#1}}
+\newcommand{\indexedpair}[2]{\indexed{#1}(\indexed{#2})}
+\newcommand{\keyword}[1]{\textkw{\indexed{#1}}}
+\newcommand{\keywordpair}[2]{\textkw{\indexedpair{#1}{#2}}}
+
+\newcommand{\foreachdo}[2]{%
+\def\mystring{#2}%
+\StrCut{\mystring}{/}\tmp\tmptmp%
+#1{\tmp}%
+\ifx\tmptmp\empty{}\else{/\foreachdo{#1}{\tmptmp}}\fi%
+}
+
+\renewcommand {\thetable} {\arabic{chapter}.\arabic{table}}
+\renewcommand {\thefigure} {\arabic{chapter}.\arabic{figure}}
+\renewcommand {\theequation} {\arabic{chapter}.\arabic{equation}}
+
+\newcommand{\inputfig}[1]{
+\import{./figures/}{#1.tikz}
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\setlist{noitemsep,topsep=0pt}
+\setlength{\parskip}{.5em}
+\hypersetup{final}
+
+\title{南开大学软件学院硕士研究生专业数学基础课程复习笔记}
+\author{gsxab}
+\date{2019/12/11}
+
+%\includeonly{tex/optimization-theory}
+
+% Document
+\begin{document}
+%    \maketitle
+
+    \include{tex/matrix-theory}
+    \include{tex/optimization-theory}
+\end{document}
